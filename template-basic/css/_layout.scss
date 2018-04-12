@@ -1,0 +1,17 @@
+@import "mixin";
+body,html{
+  width:100%;
+  height:100%;
+  overflow: auto;
+}
+/*header footer----------start*/
+.lea-container{
+  width:$main-w;
+  padding:0;
+  margin:0 auto;
+}
+.lea-container-fluid{
+  width:100%;
+  min-width: $main-w;
+  display:block;
+}

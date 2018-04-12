@@ -1,0 +1,17 @@
+@import "mixin";
+body{
+  font: 14px/1 "Microsoft YaHei", Tahoma, Verdana, Arial, "Helvetica", "sans-serif";
+  color:$color;
+}
+.link{
+  @include line-link($a-color,$a-color);
+}
+.link-theme{
+  @include line-link($theme,$theme);
+}
+.link-none{
+  @include color-link(#222,$a-color);
+}
+.link-theme-none{
+  @include line-link(#222,$theme);
+}
