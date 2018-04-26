@@ -1,3 +1,4 @@
+@charset "UTF-8";
 @mixin font-dpr($font-size){
   font-size: $font-size;
   [data-dpr="2"] &{
@@ -57,25 +58,18 @@
   -o-animation-#{$property}: $value;
   animation-#{$property}: $value;
 }
-@mixin clear-float{
-  &:before,&:after{
-    content:"";
-    display:table;
-  }
-  &:after{
-    clear:both;
-  }
-}
-@mixin opacity-el($opa){
+@mixin opacity($opa){
   opacity:$opa;
   -ms-filter:alpha(opacity = $opa * 100);
 }
-//@mixin bg-opacity($opacity:.5){
-//  background: rgb(0,0,0); /*The Fallback color*/
-//  background: rgba(0, 0, 0,$opacity);
-//  -ms-filter: "progid:DXImageTransform.Microsoft.gradient(GradientType=1,startColorstr=#80000000,endColorstr=#80000000)"; /*Filter for IE8 */
-//  filter: progid:DXImageTransform.Microsoft.gradient(GradientType=1,startColorstr=#80000000, endColorstr=#80000000); /*Filter for older IEs */
-//}
+//背景透明度，兼容ie8
+@mixin bg-opacity($sc,$ec){
+  filter: progid:DXImageTransform.Microsoft.gradient(enabled='true', startColorstr='#{ie-hex-str($sc)}', endColorstr='#{ie-hex-str($ec)}');
+  background-color:$sc;
+  :root &{
+    filter:none;//ie9及以上滤镜
+  }
+}
 @mixin cursor-color($color,$textColor:#333){
   color: $color;/*光标颜色*/
   text-shadow: 0 0 0 $textColor;/*文本颜色*/
@@ -136,7 +130,6 @@
   box-shadow: $shadow;
 }
 @mixin linear-gradient($startColor,$endColor,$degree:left){
-  background: $endColor;
   background: -moz-linear-gradient($degree, $startColor, $endColor);
   background: -webkit-linear-gradient($degree,$startColor,$endColor);
   background: -o-linear-gradient($degree, $startColor, $endColor);
@@ -162,8 +155,8 @@
 @mixin block-center{
   display:block;
   margin:{
-    left:auto;
-    right:auto;
+    left:auto !important;
+    right:auto !important;
   }
 }
 @mixin img-ww($w:100%,$h:100%){
@@ -190,8 +183,6 @@
   &:before,&:after{
     content: "";
     display: table;
-  }
-  &:after{
     clear: both;
   }
 }
@@ -204,25 +195,32 @@
   -moz-box-sizing: $size;
   box-sizing: $size;
 }
+@mixin appearance($value:none){
+  -webkit-appearance: $value;
+  -moz-appearance: $value;
+  appearance: $value;
+}
 /*color---------*/
 /*--basic--*/
-$form-height-md:40px;
-$form-height:36px;
+$form-height-md:58px;
+$form-height:44px;
 $form-height-sm:30px;
 $placeholder:rgb(188,180,204);
-$color:#333;
+$color:#545454;
+$color-bold:#222;
 $bg:rgb(244,244,244);
-$theme:rgb(255,69,92);
-$theme-bold:rgb(237,41,65);
+$theme:rgb(255,115,0);
+$theme-light:rgb(255,176,77);
+$green:rgb(73,201,42);
 $time:.4s;
 $animate:ease;
 $radius:4px;
 $line-h:1.42;
-$main-w:1190px;
+$main-w:992px;
 $a-color:rgb(47,133,239);
 $a-color-hover: rgb(34, 122, 239);
 $border-color:#efefef;
-@mixin color-link($color:#222,$color-hover:$theme){
+@mixin color-link($color:$color,$color-hover:$theme){
   &{
     color:$color;
   }
