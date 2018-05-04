@@ -1,0 +1,56 @@
+@import "mixin";
+.btn{
+  display:inline-block;
+  cursor: pointer;
+  text-align: center;
+  border:none;
+  &:focus,&:focus:active{
+    @include outline-shadow-none();
+  }
+  @include transition(background-color,$time);
+  @include font-dpr(14px);
+  @include h-radius($radius:$radius);
+  padding: 0 .32rem;
+  @include h-radius($form-height,$form-height,$radius);
+  &.fluid{
+    width:90%;
+  }
+  &.btn-md{
+    @include font-dpr(18px);
+    padding: 0 20px;
+    @include h-radius($form-height-md,$form-height-md,$radius);
+  }
+  &.btn-xs{
+    @include font-dpr(12px);
+    padding: 0 8px;
+    @include h-radius($form-height-sm,$form-height-sm,$radius);
+  }
+}
+.btn-theme{
+  color:#fff;
+  background-color: $theme;
+  &:hover,&:focus{
+    color:#fff;
+    background-color: $theme-bold;
+  }
+}
+.btn-green{
+  color:#fff;
+  background-color: $green;
+  &:hover,&:focus{
+    color:#fff;
+    background-color: rgba($green,.8);
+  }
+}
+#buyCourse{
+  @include block-center();
+  margin-bottom:.32rem;
+}
+.btn-yellow{
+  color:$yellow-color;
+  background-color: $yellow;
+  &:hover,&:focus{
+    color:$yellow-color;
+    background-color: $yellow;
+  }
+}

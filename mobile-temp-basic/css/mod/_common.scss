@@ -1,0 +1,33 @@
+@import "mixin";
+@import "reset";
+//@import "form";
+@import "button";
+@import "layout";
+@import "menu";
+html{
+  @include font-dpr(75px);
+}
+body{
+  @include font-dpr(16px);
+  font-family:"Helvetica", "sans-serif", Tahoma, Verdana, Arial;
+  color:$color;
+}
+.link{
+  @include line-link($a-color,$a-color);
+}
+.link-theme{
+  @include line-link($theme,$theme);
+}
+.link-theme.light{
+  color:$color-light;
+}
+.link-none{
+  @include color-link(#222,$a-color);
+}
+.link-theme-none{
+  @include color-link(#222,$theme);
+}
+.circle-img{
+  @include radius(50%);
+  overflow: hidden;
+}
