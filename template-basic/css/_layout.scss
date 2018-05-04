@@ -1,17 +1,33 @@
 @import "mixin";
-body,html{
+html{
   width:100%;
   height:100%;
-  overflow: auto;
+}
+body{
+  width:100%;
+  height:auto;
+  overflow-x: hidden;
 }
 /*header footer----------start*/
 .lea-container{
   width:$main-w;
   padding:0;
   margin:0 auto;
+  @media (min-width:1200px) {
+    width:1170px;
+  }
 }
 .lea-container-fluid{
   width:100%;
   min-width: $main-w;
   display:block;
+  @media (min-width:1200px) {
+    min-width:1170px;
+  }
+}
+.content{
+  width:100%;
+  height:auto;
+  padding:0 15px;
+  @include clear-both();
 }

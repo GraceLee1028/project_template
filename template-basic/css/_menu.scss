@@ -1,0 +1,48 @@
+@import "mixin";
+.nav{
+  @include clear-both();
+  .logo{
+    float: left;
+  }
+}
+.menu{
+  float: right;
+  @include ul-reset();
+  @include clear-both();
+  li{
+    display:inline-block;
+    float:left;
+    padding:0 24px;
+    font-size:18px;
+    a{
+      display:inline-block;
+      position:relative;
+    }
+  }
+  &.theme{
+    li{
+      a{
+        color:$color;
+        @include color-link($color-hover:$theme);
+        &:after{
+          content:"";
+          display:inline-block;
+          width:0;
+          height:2px;
+          background-color: $theme;
+          @include transition(all,$time,$animate);
+          @include position($left:0,$bottom:-8px)
+        }
+      }
+      &.active{
+        a{
+          position:relative;
+          color:$theme;
+          &:after{
+            width:100%;
+          }
+        }
+      }
+    }
+  }
+}

@@ -3,15 +3,15 @@ body{
   font: 14px/1 "Microsoft YaHei", Tahoma, Verdana, Arial, "Helvetica", "sans-serif";
   color:$color;
 }
-.link{
+.line-link{
   @include line-link($a-color,$a-color);
 }
-.link-theme{
+.line-theme-link{
   @include line-link($theme,$theme);
 }
-.link-none{
+.link{
   @include color-link(#222,$a-color);
 }
-.link-theme-none{
+.link-theme{
   @include line-link(#222,$theme);
 }
